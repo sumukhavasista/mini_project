@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AdminContext } from './AdminContext';
 
 const CurrentAdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AdminContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Replace with your own username and password
     const validUsername = 'admin';
     const validPassword = 'admin123';
 
     if (username === validUsername && password === validPassword) {
+      login();
       navigate('/add-vehicle');
     } else {
       alert('Invalid username or password');

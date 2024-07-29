@@ -27,30 +27,26 @@ const ResultPage = () => {
     fetchVehicle();
   }, [vehicleNumber]);
 
-  const handleAddVehicle = () => {
-    navigate('/add-vehicle');
+  const handleBackClick = () => {
+    navigate('/');
   };
 
   return (
-    <div>
-      {error && (
-        <div>
-          <div>{error}</div>
-          <button onClick={handleAddVehicle}>Insert Vehicle</button>
+    <div className="result-page">
+      <h1>Vehicle Details</h1>
+      {error ? (
+        <p className="error">{error}</p>
+      ) : vehicleDetails ? (
+        <div className="vehicle-details">
+          <p><strong>Owner:</strong> {vehicleDetails.owner}</p>
+          <p><strong>Model:</strong> {vehicleDetails.model}</p>
+          <p><strong>Year:</strong> {vehicleDetails.year}</p>
+          <p><strong>Color:</strong> {vehicleDetails.color}</p>
         </div>
+      ) : (
+        <p>Loading...</p>
       )}
-      {vehicleDetails && (
-        <div>
-          <h2>Vehicle Details</h2>
-          <p>Vehicle Number: {vehicleDetails.vehicleNumber}</p>
-          <p>Owner: {vehicleDetails.owner}</p>
-          <p>Model: {vehicleDetails.model}</p>
-          <p>Insurance: {vehicleDetails.insurance}</p>
-          <p>Brand Name: {vehicleDetails.brandName}</p>
-          <p>Engine Capacity: {vehicleDetails.engineCapacity}</p>
-          <p>Price: ${vehicleDetails.price}</p>
-        </div>
-      )}
+      <button onClick={handleBackClick}>Back</button>
     </div>
   );
 };

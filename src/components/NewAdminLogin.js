@@ -6,15 +6,13 @@ const NewAdminLogin = () => {
   const [password, setPassword] = useState('');
   const [state, setState] = useState('');
   const [stateCode, setStateCode] = useState('');
-  const [registrationStatus, setRegistrationStatus] = useState('Pending'); 
+  const [registrationStatus, setRegistrationStatus] = useState('Pending');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
     alert('New admin registered successfully.');
-    navigate('/admin-login'); 
+    navigate('/admin-login');
   };
 
   return (

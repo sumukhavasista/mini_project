@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/HomePage.css';
 
 const HomePage = () => {
-  const [vehicleNumber, setVehicleNumber] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = () => {
-    navigate(`/result/${vehicleNumber}`);
-  };
-
   return (
-    <div>
-      <h1>Vehicle Search</h1>
-      <input
-        type="text"
-        placeholder="Enter Vehicle Number"
-        value={vehicleNumber}
-        onChange={(e) => setVehicleNumber(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+    <div className="homepage">
+      <header className="header">
+        <h1 className="title">KNOW YOUR VEHICLE</h1>
+        <div className="login-buttons">
+          <Link to="/user-login">
+            <button>User Login</button>
+          </Link>
+          <Link to="/admin-login">
+            <button>Admin Login</button>
+          </Link>
+        </div>
+      </header>
     </div>
   );
 };
